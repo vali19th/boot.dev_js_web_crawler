@@ -1,21 +1,27 @@
 {
-  "name": "boot.dev_js_web_crawler",
-  "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@gitlab.com/vali19th/boot.dev_js_web_crawler.git"
-  },
-  "author": "Valentin Neagu",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://gitlab.com/vali19th/boot.dev_js_web_crawler/issues"
-  },
-  "homepage": "https://gitlab.com/vali19th/boot.dev_js_web_crawler#readme"
+    "name": "boot.dev_js_web_crawler",
+    "version": "0.1.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    },
+    "jest": {
+        "transform": {}
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@gitlab.com/vali19th/boot.dev_js_web_crawler.git"
+    },
+    "author": "Valentin Neagu",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://gitlab.com/vali19th/boot.dev_js_web_crawler/issues"
+    },
+    "homepage": "https://gitlab.com/vali19th/boot.dev_js_web_crawler#readme",
+    "devDependencies": {
+        "jest": "^29.7.0"
+    }
 }
 
