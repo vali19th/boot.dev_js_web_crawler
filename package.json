@@ -1,6 +1,7 @@
 {
     "name": "boot.dev_js_web_crawler",
     "version": "0.1.0",
+    "type": "module",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -22,6 +23,8 @@
     "homepage": "https://gitlab.com/vali19th/boot.dev_js_web_crawler#readme",
     "devDependencies": {
         "jest": "^29.7.0"
+    },
+    "dependencies": {
+        "jsdom": "^24.0.0"
     }
 }
-
