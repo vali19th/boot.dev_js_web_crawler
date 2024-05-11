@@ -19,6 +19,7 @@ __pycache__/*
 data/
 logs/
 *sandbox*
+node_modules
 
 # Project files
 .ropeproject
