@@ -30,23 +30,39 @@ function getURLsFromHTML(html, base_url){
     return urls;
 }
 
-function crawl(baseURL, currentURL=baseURL, pages={}){
-    console.log(`Crawling ${url}`)
-    fetch(url).then(async (response) => {
-        if (response.status >= 400) {
-            console.error(`Error: ${response.status}`);
-            return;
-        }
+async function crawl(base_url, url=base_url, pages={}){
+    if (!url.includes(base_url)) {
+        return pages;
+    }
 
-        if (!response.headers.get('content-type').includes('text/html')) {
-            console.error('Error: not an HTML page');
-            return;
-        }
+    const normalized = normalizeURL(url);
+    if (pages[normalized]) {
+        pages[normalized] += 1;
+        return pages;
+    }
 
-        const html = await response.text();
-        const urls = getURLsFromHTML(html, url);
-        console.table(urls);
-    });
+    pages[normalized] = 1;
+
+    const res = await fetch(url)
+    if (res.status >= 400) {
+        return;
+    }
+
+    if (!res.headers.get('content-type').includes('text/html')) {
+        return;
+    }
+
+    const html = await res.text();
+    for (let u of getURLsFromHTML(html, base_url)) {
+        if (u.endsWith('/')) {
+            u = u.slice(0, -1);
+        }
+        if (u === "https://www.wagslane.dev/tags/tags"){
+            return pages;
+        }
+        await crawl(base_url, u, pages);
+    }
+    return pages
 }
 
 export { crawl, getURLsFromHTML, normalizeURL };
